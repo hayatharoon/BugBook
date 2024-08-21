@@ -1,17 +1,17 @@
 import { cn } from "@/lib/utils";
-import { Button, ButtonProps } from "./ui/button";
 import { Loader2 } from "lucide-react";
+import { Button, ButtonProps } from "./ui/button";
 
 interface LoadingButtonProps extends ButtonProps {
   loading: boolean;
 }
 
-const LoadingButton = ({
+export default function LoadingButton({
   loading,
   disabled,
   className,
   ...props
-}: LoadingButtonProps) => {
+}: LoadingButtonProps) {
   return (
     <Button
       disabled={loading || disabled}
@@ -22,6 +22,4 @@ const LoadingButton = ({
       {props.children}
     </Button>
   );
-};
-
-export default LoadingButton;
+}

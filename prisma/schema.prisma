@@ -25,17 +25,17 @@ model User {
   avatarUrl    String?
   bio          String?
   sessions     Session[]
-  createdAt    DateTime  @default(now())
 
-  @@map("users") // name of the table, otherwise by default the table will be called User
+  createdAt DateTime @default(now())
+
+  @@map("users")
 }
 
 model Session {
-  id     String  @id
-  User   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId String?
+  id        String   @id
+  userId    String
+  expiresAt DateTime
+  User      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("sessions")
 }
-
-// onDelete: Cascade: if the user delete will also delete the coresponding session
